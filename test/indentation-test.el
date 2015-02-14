@@ -28,13 +28,64 @@
   "one tag and values"
   (with-fluenntd-temp-buffer
     "
+   foo
    <source>
      type forward
      port 24224
    </source>
+       bar
 "
+    (forward-cursor-on "foo")
+    (call-interactively 'indent-for-tab-command)
+    (= (current-indentation) 0)
+
     (forward-cursor-on "<source>")
     (call-interactively 'indent-for-tab-command)
+    (= (current-indentation) 0)
+
+    (forward-cursor-on "type")
+    (call-interactively 'indent-for-tab-command)
+    (= (current-indentation) fluentd-indent-level)
+
+    (forward-cursor-on "port")
+    (call-interactively 'indent-for-tab-command)
+    (= (current-indentation) fluentd-indent-level)
+
+    (forward-cursor-on "</source>")
+    (call-interactively 'indent-for-tab-command)
+    (= (current-indentation) 0)
+
+    (forward-cursor-on "bar")
+    (call-interactively 'indent-for-tab-command)
     (= (current-indentation) 0)))
+
+(ert-deftest nested-tag ()
+  "nestead tags and values"
+  (with-fluenntd-temp-buffer
+    "
+   <match tag>
+     type forward
+     port 24224
+
+     <class>
+       name taro
+     </class>
+   </match>
+"
+    (forward-cursor-on "<match")
+    (call-interactively 'indent-for-tab-command)
+    (= (current-indentation) 0)
+
+    (forward-cursor-on "<class>")
+    (call-interactively 'indent-for-tab-command)
+    (= (current-indentation) fluentd-indent-level)
+
+    (forward-cursor-on "name")
+    (call-interactively 'indent-for-tab-command)
+    (= (current-indentation) (* fluentd-indent-level 2))
+
+    (forward-cursor-on "</class>")
+    (call-interactively 'indent-for-tab-command)
+    (= (current-indentation) fluentd-indent-level)))
 
 ;;; indentation-test.el ends here
