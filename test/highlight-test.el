@@ -48,4 +48,19 @@
     (forward-cursor-on "</source>")
     (should (face-at-cursor-p 'fluentd-tag))))
 
+(ert-deftest tag-parameter-highlight ()
+  "highlighting one tag and values"
+  (with-fluenntd-temp-buffer
+    "
+<match myapp.access>
+  type file
+  path /var/log/fluent/access
+</match>
+"
+    (forward-cursor-on "<match")
+    (should (face-at-cursor-p 'fluentd-tag))
+
+    (forward-cursor-on "myapp\\.access")
+    (should (face-at-cursor-p 'fluentd-tag-parameter))))
+
 ;;; highlight-test.el ends here
