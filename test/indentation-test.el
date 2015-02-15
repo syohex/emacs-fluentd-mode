@@ -24,7 +24,7 @@
 (require 'ert)
 (require 'fluentd-mode)
 
-(ert-deftest tag-and-values ()
+(ert-deftest tag-and-values-indent ()
   "one tag and values"
   (with-fluenntd-temp-buffer
     "
@@ -59,7 +59,7 @@
     (call-interactively 'indent-for-tab-command)
     (= (current-indentation) 0)))
 
-(ert-deftest nested-tag ()
+(ert-deftest nested-tag-indent ()
   "nestead tags and values"
   (with-fluenntd-temp-buffer
     "
