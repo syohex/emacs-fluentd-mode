@@ -12,6 +12,7 @@ ELPA_DIR = \
 test: elpa
 	$(CASK) exec $(EMACS) -Q -batch $(LOADPATH) $(LOAD_HELPER) \
 		-l test/indentation-test.el \
+		-l test/highlight-test.el \
 		-f ert-run-tests-batch-and-exit
 
 elpa: $(ELPA_DIR)
