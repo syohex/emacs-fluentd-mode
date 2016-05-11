@@ -1,10 +1,11 @@
-;;; fluentd-mode.el --- Major mode for fluentd configuration file
+;;; fluentd-mode.el --- Major mode for fluentd configuration file -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2015 by Syohei YOSHIDA
 
 ;; Author: Syohei YOSHIDA <syohex@gmail.com>
 ;; URL: https://github.com/syohex/emacs-fluentd-mode
 ;; Version: 0.01
+;; Package-Requires: ((emacs "24") (cl-lib "0.5"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -21,6 +22,8 @@
 
 ;;; Commentary:
 
+;; Major mode for fluentd configuration file
+
 ;;; Code:
 
 (require 'cl-lib)
@@ -31,8 +34,7 @@
 
 (defcustom fluentd-indent-level 2
   "Indent level."
-  :type 'integer
-  :group 'fluentd)
+  :type 'integer)
 
 (defconst fluentd--tag-regexp
   "^\\s-*\\(</?[^ \t\r\n>]+\\)\\(?:\\s-+\\([^>]+\\)\\)?\\(>\\)")
@@ -42,23 +44,19 @@
 
 (defface fluentd-tag
   '((t (:inherit font-lock-keyword-face)))
-  "Face of TAG"
-  :group 'fluentd)
+  "Face of TAG")
 
 (defface fluentd-tag-parameter
   '((t (:inherit font-lock-type-face)))
-  "Face of tag parameter"
-  :group 'fluentd)
+  "Face of tag parameter")
 
 (defface fluentd-parameter-name
   '((t (:inherit font-lock-variable-name-face)))
-  "Face of parameter name"
-  :group 'fluentd)
+  "Face of parameter name")
 
 (defface fluentd-parameter-value
   '((t (:inherit font-lock-constant-face)))
-  "Face of parameter value"
-  :group 'fluentd)
+  "Face of parameter value")
 
 (defvar fluentd-font-lock-keywords
   `((,fluentd--tag-regexp (1 'fluentd-tag)
@@ -150,6 +148,7 @@
 
   (set (make-local-variable 'comment-start) "#"))
 
+;;;###autoload
 (add-to-list 'auto-mode-alist '("fluentd.conf\\'" . fluentd-mode))
 
 (provide 'fluentd-mode)
