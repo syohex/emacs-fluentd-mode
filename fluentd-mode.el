@@ -32,8 +32,7 @@
 
 (defcustom fluentd-indent-level 2
   "Indent level."
-  :type 'integer
-  :group 'fluentd)
+  :type 'integer)
 
 (defconst fluentd--tag-regexp
   "^\\s-*\\(</?[^ \t\r\n>]+\\)\\(?:\\s-+\\([^>]+\\)\\)?\\(>\\)")
@@ -43,23 +42,19 @@
 
 (defface fluentd-tag
   '((t (:inherit font-lock-keyword-face)))
-  "Face of TAG"
-  :group 'fluentd)
+  "Face of TAG")
 
 (defface fluentd-tag-parameter
   '((t (:inherit font-lock-type-face)))
-  "Face of tag parameter"
-  :group 'fluentd)
+  "Face of tag parameter")
 
 (defface fluentd-parameter-name
   '((t (:inherit font-lock-variable-name-face)))
-  "Face of parameter name"
-  :group 'fluentd)
+  "Face of parameter name")
 
 (defface fluentd-parameter-value
   '((t (:inherit font-lock-constant-face)))
-  "Face of parameter value"
-  :group 'fluentd)
+  "Face of parameter value")
 
 (defvar fluentd-font-lock-keywords
   `((,fluentd--tag-regexp (1 'fluentd-tag)
