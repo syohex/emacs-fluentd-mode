@@ -22,6 +22,8 @@
 
 ;;; Commentary:
 
+;; Major mode for fluentd configuration file
+
 ;;; Code:
 
 (require 'cl-lib)
