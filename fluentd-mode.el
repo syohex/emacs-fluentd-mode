@@ -149,7 +149,7 @@
   (set (make-local-variable 'comment-start) "#"))
 
 ;;;###autoload
-(add-to-list 'auto-mode-alist '("fluentd.conf\\'" . fluentd-mode))
+(add-to-list 'auto-mode-alist '("fluentd?.conf\\'" . fluentd-mode))
 
 (provide 'fluentd-mode)
 
