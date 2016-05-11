@@ -134,13 +134,18 @@
     (when (< (current-column) (current-indentation))
       (back-to-indentation))))
 
+(defvar fluentd-mode-syntax-table
+  (let ((table (make-syntax-table)))
+    (modify-syntax-entry ?#  "< b" table)
+    (modify-syntax-entry ?\n "> b" table)
+    (modify-syntax-entry ?<  "(>"  table)
+    (modify-syntax-entry ?>  ")<"  table)
+    table))
+
 ;;;###autoload
 (define-derived-mode fluentd-mode fundamental-mode "Fluentd"
   "Major mode for editing fluentd configuration file."
   (setq font-lock-defaults '((fluentd-font-lock-keywords)))
-
-  (modify-syntax-entry ?# "< b" fluentd-mode-syntax-table)
-  (modify-syntax-entry ?\n "> b" fluentd-mode-syntax-table)
 
   ;; indentation
   (make-local-variable 'fluentd-indent-level)
