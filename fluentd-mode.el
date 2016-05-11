@@ -1,10 +1,11 @@
-;;; fluentd-mode.el --- Major mode for fluentd configuration file
+;;; fluentd-mode.el --- Major mode for fluentd configuration file -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2015 by Syohei YOSHIDA
 
 ;; Author: Syohei YOSHIDA <syohex@gmail.com>
 ;; URL: https://github.com/syohex/emacs-fluentd-mode
 ;; Version: 0.01
+;; Package-Requires: ((emacs "24") (cl-lib "0.5"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
